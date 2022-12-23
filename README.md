@@ -1,5 +1,8 @@
 # Web Photo Source Identification based on Neural Enhanced Camera Fingerprint
 
+## Updates!!
+- 【2022-12-22】: We supplement the experimental results for evaluating the security of spatial splitting. We also supplement the results of our released model on a supplementary test dataset (1,276 RAW photos from 15 Android smartphone cameras) and a public JPEG-based dataset (34,427 JPEG photos from 35 devices), both with good performance. We will release our Android dataset after acceptance of the paper.
+
 ## Introduction
 Source camera identification of web photos aims to establish a reliable linkage from the captured images to their source cameras, and has a broad range of applications, such as image copyright protection, user authentication, investigated evidence verification, etc. 
 Our paper presents an innovative and practical source identification framework that employs neural-network enhanced sensor pattern noise to trace back web photos efficiently while ensuring security. 
@@ -25,10 +28,41 @@ You should see the output performance. In the case of single photo registration,
 - Results locates at：/path/PhotoNecf/results/measures/fingerprints_vs_fingerprints.npy, AUC: 99.80265567168468EER: 1.6559416559416558
 ```
 
+## Supplementary Experimental Results
+
+### Security Evaluation of Spatial Splitting
+
+For evaluating the security of spatial splitting, we first derive the fingerprints of 15 iPhone cameras from their RAW photos based on our released model under multiple registration setting with N=40. Then for each camera, we spatially split the original fingerprint into two parts that are adjacent to each other on pixels, which we denote as odd fingerprint and even fingerprint respectively. Finally, we calculate AUC from the correlation matrix between odd fingerprint and even fingerprint for each camera.
+
+The following figure illustrates the correlation matrix and AUC for each camera. We got an average of 96.22% AUC with 5.33% standard deviation, which indicates relatively low information leakage.
+
+<figure>
+    <div style="text-align: center;">
+        <img src=./odd_even_fp_corr_mat.jpeg width=80% />
+    </div>
+</figure>
+
+
+
+Moreover, we calculated AUC and EER from the correlation matrix between 15 odd fingerprints and the correlation matrix between 15 even fingerprints, i.e., two 15X15 matrices. The results show 99.99% AUC and 0.25% EER for odd fingerprints, and 99.92% AUC and 0.49% EER for even fingerprints, both indicating highly discriminative ability.
+
+### Network Performance on Android RAW photos and JPEG photos
+
+While our released model was trained only on iPhone RAW photos, it displayed superior generalization and adaptability on both RAW Android photos and JPEG compressed photos.
+
+For examining Android RAW photos, we provide a test dataset with 1,276 RAW photos from 15 Android smartphone cameras which will be released after paper acceptance. The following table shows the fingerprint accuracy performance comparison of our algorithm with previous algorithms on this dataset. The results with * indicate containing post-processing (ZM & WF). As shown in the table, our model outperforms conventional algorithms by a large margin with much higher AUC and lower EER.
+
+<figure>
+    <div style="text-align: center;">
+        <img src=./results_android_photos.jpeg width=50% />
+    </div>
+</figure>
+
+For examining JPEG compressed photos, we directly tested our released model on the VISION dataset[^1] (35 devices with 34,427 JPEG photos). On this JPEG compressed dataset we obtained 92.83% AUC, indicating better discrimination than other SOTA methods.
 
 ## Next-step
 The following content will also be released after paper acceptance.
-- [ ] Release of benchmark dataset containing 1665 RAW photos.
+- [ ] Release of two benchmark datasets: a dataset containing 1,665 RAW photos from 15 iPhone cameras and a newly supplementary dataset containing 1,276 RAW photos from 15 Android smartphone cameras.
 - [ ] Release of Training codes for fingerprint extraction network.
 - [ ] Integration codes (including cryptographic schemes).
 
@@ -58,4 +92,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-``` 
+```
+
+[^1]: Shullani, D., Fontani, M., Iuliani, M. et al. VISION: a video and image dataset for source identification. EURASIP J. on Info. Security 2017, 15 (2017).
