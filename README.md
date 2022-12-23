@@ -32,7 +32,7 @@ You should see the output performance. In the case of single photo registration,
 
 ### Security Evaluation of Spatial Splitting
 
-For evaluating the security of spatial splitting, we first derive one fingerprint from each RAW odd photo and one fingerprint from each RAW even photo for 15 iPhone cameras (i.e., resulting in two sets of 1665 fingerprints) based on our released model under multiple registration setting with N=40. Then for each camera, we calculate AUC from the correlation matrix between its odd fingerprints and even fingerprints.
+For evaluating the security of spatial splitting, we first derive one fingerprint from each RAW odd photo and one fingerprint from each RAW even photo for 15 iPhone cameras (i.e., resulting in two sets of 1,665 fingerprints) based on our released model under multiple registration setting with N=40. Then for each camera, we calculate AUC from the correlation matrix between its odd fingerprints and even fingerprints.
 
 The following figure illustrates the correlation matrix and AUC for each camera. We got an average of 96.22% AUC with 5.33% standard deviation, which indicates relatively low information leakage.
 
