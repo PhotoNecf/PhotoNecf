@@ -32,9 +32,9 @@ You should see the output performance. In the case of single photo registration,
 
 ### Security Evaluation of Spatial Splitting
 
-For evaluating the security of spatial splitting, we first derive one fingerprint from each RAW odd photo and one fingerprint from each RAW even photo for 15 iPhone cameras based on our released model, resulting in two sets of 1665 fingerprints. Then for each RAW photo, we calculate NCC (Normalized Cross-correlation Coefficient) from its corresponding RAW odd fingerprint and RAW even fingerprint. Finally, for each camera, we calculate AUC from its NCC of RAW photos over two parts (odd/even).
+For evaluating the security of spatial splitting, we first derive one fingerprint from each RAW odd photo and one fingerprint from each RAW even photo for 15 iPhone cameras based on our released model, resulting in two sets of 1,665 fingerprints. Then for each RAW photo, we calculate NCC (Normalized Cross-correlation Coefficient) from its corresponding RAW odd fingerprint and RAW even fingerprint. Finally, for each camera, we calculate AUC from its NCC of RAW photos over two parts (odd and even).
 
-The following figure illustrates the NCC over two parts (odd/even) and AUC for each camera. We got an average of 96.22% AUC with 5.33% standard deviation, which indicates relatively low information leakage.
+The following figure illustrates the NCC over two parts (odd and even) and AUC for each camera. We got an average of 96.22% AUC with 5.33% standard deviation, which indicates relatively low information leakage.
 
 <figure>
     <div style="text-align: center;">
