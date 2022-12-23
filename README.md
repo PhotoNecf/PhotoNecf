@@ -44,7 +44,7 @@ The following figure illustrates the correlation matrix and AUC for each camera.
 
 
 
-Moreover, we calculated AUC and EER from the correlation matrix between RAW odd photos and the correlation matrix between RAW even photos, i.e., two 1665X1665 matrices . The results show 99.99% AUC and 0.253% EER for RAW odd photos, and 99.92% AUC and 0.497% EER for RAW even photos, both indicating highly discriminative ability.
+Moreover, we calculated AUC and EER from the correlation matrix between RAW odd fingerprints and the correlation matrix between RAW even fingerprints, i.e., two 1665X1665 matrices . The results show 99.99% AUC and 0.253% EER for RAW odd fingerprints, and 99.92% AUC and 0.497% EER for RAW even fingerprints, both indicating highly discriminative ability.
 
 ### Network Performance on Android RAW photos and JPEG photos
 
