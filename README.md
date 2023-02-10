@@ -2,6 +2,7 @@
 
 ## Updates!!
 - 【2022-12-22】: We supplement the experimental results for evaluating the security of spatial splitting. We also supplement the results of our released model on a supplementary test dataset (1,276 RAW photos from 15 Android smartphone cameras) and a public JPEG-based dataset (34,427 JPEG photos from 35 devices), both with good performance. We will release our Android dataset after acceptance of the paper.
+- 【2023-02-09】: The paper was accepted by WWW 2023! We release the benchmark test set, network training codes and cryptographic codes. We integrate the 'supplementary experimental results' to the final paper (Appendix A & B) which will appear in *Proceedings* of WWW'23. 
 
 ## Introduction
 Source camera identification of web photos aims to establish a reliable linkage from the captured images to their source cameras, and has a broad range of applications, such as image copyright protection, user authentication, investigated evidence verification, etc. 
@@ -10,7 +11,7 @@ The codes for fingerprint extraction network and benchmark dataset with modern s
 
 ## Preparations
 * Download the fingerprint extraction network model file and put them under directory `models/ckpts/`.
-* Download the RAW photos (about 17G, will be released after paper acceptance) and put them in `data/images/`. 
+* Download the iPhone/Android RAW photos (about 17G/44G) and put them in `data/images/`. We provide download issues with DOIs as indicated in paper. 
 * Install python requirements in `requirements.txt`.
 
 ## Run and Evaluation
@@ -23,49 +24,25 @@ Then run evaluation scripts on above fingerprint file as:
 ```bash
 python3 run_ncc.py
 ```
-You should see the output performance. In the case of single photo registration, the result is
+You should see the output performance. In the case of single photo registration, the result with iPhone images is
 ```
 - Results locates at：/path/PhotoNecf/results/measures/fingerprints_vs_fingerprints.npy, AUC: 99.80265567168468EER: 1.6559416559416558
 ```
 
-## Supplementary Experimental Results
+## Train
+Run the training script with default hyperparameters. Before that, the users are required to provide: (1) the pseudo GT (located at line 16 of utils/datasetnp.py ) by the conventional PRNU algorithm as described in Section 2.1 of paper; (2) the training data set and test data set with npy format (located at line 20 & 28 of run_train.py).
+```bash
+python3 run_train.py
+```
 
-### Security Evaluation of Spatial Splitting
-
-For evaluating the security of spatial splitting, we first derive one fingerprint from each RAW odd photo and one fingerprint from each RAW even photo for 15 iPhone cameras based on our released model, resulting in two sets of 1,665 fingerprints. Then for each RAW photo, we calculate NCC (Normalized Cross-correlation Coefficient) from its corresponding RAW odd fingerprint and RAW even fingerprint. Finally, for each camera, we calculate AUC from its NCC of RAW photos over two parts (odd and even).
-
-The following figure illustrates the NCC over two parts (odd and even) and AUC for each camera. We got an average of 96.22% AUC with 5.33% standard deviation, which indicates relatively low information leakage.
-
-<figure>
-    <div style="text-align: center;">
-        <img src=./odd_even_fp_corr_mat.jpeg width=80% />
-    </div>
-</figure>
-
-
-
-Moreover, we calculated AUC and EER from the correlation matrix between RAW odd fingerprints and the correlation matrix between RAW even fingerprints, i.e., two 1665X1665 matrices . The results show 99.99% AUC and 0.253% EER for RAW odd fingerprints, and 99.92% AUC and 0.497% EER for RAW even fingerprints, both indicating highly discriminative ability.
-
-### Network Performance on Android RAW photos and JPEG photos
-
-While our released model was trained only on iPhone RAW photos, it displayed superior generalization and adaptability on both RAW Android photos and JPEG compressed photos.
-
-For examining Android RAW photos, we provide a test dataset with 1,276 RAW photos from 15 Android smartphone cameras which will be released after paper acceptance. The following table shows the fingerprint accuracy performance comparison of our algorithm with previous algorithms on this dataset. The results with * indicate containing post-processing (ZM & WF). As shown in the table, our model outperforms conventional algorithms by a large margin with much higher AUC and lower EER.
-
-<figure>
-    <div style="text-align: center;">
-        <img src=./results_android_photos.jpeg width=50% />
-    </div>
-</figure>
-
-For examining JPEG compressed photos, we directly tested our released model on the VISION dataset[^1] (35 devices with 34,427 JPEG photos). On this JPEG compressed dataset we obtained 92.83% AUC, indicating better discrimination than other SOTA methods.
+## Cryptographic Schemes
+We provide the codes of zero-knowledge proof scheme in `cyptographc_schemes` folder with its own README description.
 
 ## Next-step
 The following content will also be released after paper acceptance.
-- [ ] Release of two benchmark datasets: a dataset containing 1,665 RAW photos from 15 iPhone cameras and a newly supplementary dataset containing 1,276 RAW photos from 15 Android smartphone cameras.
-- [ ] Release of Training codes for fingerprint extraction network.
-- [ ] Integration codes (including cryptographic schemes).
-
+- [X] Release of two benchmark datasets: a dataset containing 1,665 RAW photos from 15 iPhone cameras and a newly supplementary dataset containing 1,276 RAW photos from 15 Android smartphone cameras.
+- [X] Release of Training codes for fingerprint extraction network.
+- [X] Integration codes (including cryptographic schemes).
 
 ## License
 The code is released under MIT license
@@ -93,5 +70,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
-
-[^1]: Shullani, D., Fontani, M., Iuliani, M. et al. VISION: a video and image dataset for source identification. EURASIP J. on Info. Security 2017, 15 (2017).
