@@ -1,8 +1,8 @@
 # Web Photo Source Identification based on Neural Enhanced Camera Fingerprint
 
 ## Updates!!
-- 【2022-12-22】: We supplement the experimental results for evaluating the security of spatial splitting. We also supplement the results of our released model on a supplementary test dataset (1,276 RAW photos from 15 Android smartphone cameras) and a public JPEG-based dataset (34,427 JPEG photos from 35 devices), both with good performance. We will release our Android dataset after acceptance of the paper.
 - 【2023-02-09】: The paper was accepted by WWW 2023! We release the benchmark test set, network training codes and cryptographic codes. We integrate the 'supplementary experimental results' to the final paper (Appendix A & B) which will appear in *Proceedings* of WWW'23. 
+- 【2022-12-22】: We supplement the experimental results for evaluating the security of spatial splitting. We also supplement the results of our released model on a supplementary test dataset (1,276 RAW photos from 15 Android smartphone cameras) and a public JPEG-based dataset (34,427 JPEG photos from 35 devices), both with good performance. We will release our Android dataset after acceptance of the paper.
 
 ## Introduction
 Source camera identification of web photos aims to establish a reliable linkage from the captured images to their source cameras, and has a broad range of applications, such as image copyright protection, user authentication, investigated evidence verification, etc. 
