@@ -44,7 +44,7 @@ We provide the codes of zero-knowledge proof scheme in `cyptographc_schemes` fol
 ## Cite Our Paper
 If the code is helpful for your work, please cite our paper
 ```
-@inproceedings{he2023transvcl,
+@inproceedings{qian2023web,
   title={Web Photo Source Identification based on Neural Enhanced Camera Fingerprint},
   author={Qian, Feng and He, Sifeng and Huang, Honghaoo and others},
   booktitle={Proceedings of the ACM Web Conference 2023},
