@@ -1,7 +1,7 @@
 # Web Photo Source Identification based on Neural Enhanced Camera Fingerprint [WWW2023]
 
 ## Updates!!
-- 【2023-02-09】: The paper was accepted by WWW 2023! The details of our paper are indicated in [arXiv version](https://arxiv.org/abs/2302.09228). We release the benchmark test set, network training codes and cryptographic codes. We integrate the 'supplementary experimental results' to the final paper (Appendix A & B) which will appear in *Proceedings* of WWW'23. 
+- 【2023-02-09】: The paper was accepted by WWW 2023! The details of our paper are indicated in [arXiv version](https://arxiv.org/abs/2302.09228). We release the benchmark test set, network training codes and cryptographic codes. We integrate the 'supplementary experimental results' to the final paper (Appendix A & B) which will be appeared in *Proceedings* of WWW'23. 
 - 【2022-12-22】: We supplement the experimental results for evaluating the security of spatial splitting. We also supplement the results of our released model on a supplementary test dataset (1,276 RAW photos from 15 Android smartphone cameras) and a public JPEG-based dataset (34,427 JPEG photos from 35 devices), both with good performance. 
 
 ## Introduction
@@ -42,11 +42,11 @@ python3 run_train.py
 We provide the codes of zero-knowledge proof scheme in `cyptographc_schemes` folder with its own README description.
 
 ## Cite Our Paper
-If the code is helpful for your work, please cite our paper
+If the codes are helpful for your work, please cite our paper
 ```
 @inproceedings{qian2023web,
   title={Web Photo Source Identification based on Neural Enhanced Camera Fingerprint},
-  author={Qian, Feng and He, Sifeng and Huang, Honghaoo and others},
+  author={Qian, Feng and He, Sifeng and Huang, Honghao and others},
   booktitle={Proceedings of the ACM Web Conference 2023},
   year={2023}
 }
