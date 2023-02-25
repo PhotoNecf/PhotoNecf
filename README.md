@@ -1,13 +1,15 @@
-# Web Photo Source Identification based on Neural Enhanced Camera Fingerprint
+# Web Photo Source Identification based on Neural Enhanced Camera Fingerprint [WWW2023]
 
 ## Updates!!
-- 【2023-02-09】: The paper was accepted by WWW 2023! We release the benchmark test set, network training codes and cryptographic codes. We integrate the 'supplementary experimental results' to the final paper (Appendix A & B) which will appear in *Proceedings* of WWW'23. 
-- 【2022-12-22】: We supplement the experimental results for evaluating the security of spatial splitting. We also supplement the results of our released model on a supplementary test dataset (1,276 RAW photos from 15 Android smartphone cameras) and a public JPEG-based dataset (34,427 JPEG photos from 35 devices), both with good performance. We will release our Android dataset after acceptance of the paper.
+- 【2023-02-09】: The paper was accepted by WWW 2023! The details of our paper are indicated in [arXiv version](https://arxiv.org/abs/2302.09228). We release the benchmark test set, network training codes and cryptographic codes. We integrate the 'supplementary experimental results' to the final paper (Appendix A & B) which will appear in *Proceedings* of WWW'23. 
+- 【2022-12-22】: We supplement the experimental results for evaluating the security of spatial splitting. We also supplement the results of our released model on a supplementary test dataset (1,276 RAW photos from 15 Android smartphone cameras) and a public JPEG-based dataset (34,427 JPEG photos from 35 devices), both with good performance. 
 
 ## Introduction
 Source camera identification of web photos aims to establish a reliable linkage from the captured images to their source cameras, and has a broad range of applications, such as image copyright protection, user authentication, investigated evidence verification, etc. 
 Our paper presents an innovative and practical source identification framework that employs neural-network enhanced sensor pattern noise to trace back web photos efficiently while ensuring security. 
 The codes for fingerprint extraction network and benchmark dataset with modern smartphone cameras photos are all publicly available in this repo.
+![OverallDesign](./figures/Fig1.png)
+
 
 ## Preparations
 * Download the fingerprint extraction network model file and put them under directory `models/ckpts/`.
@@ -34,15 +36,21 @@ Run the training script with default hyperparameters. Before that, the users are
 ```bash
 python3 run_train.py
 ```
+![Train](./figures/Fig2.png)
 
 ## Cryptographic Schemes
 We provide the codes of zero-knowledge proof scheme in `cyptographc_schemes` folder with its own README description.
 
-## Next-step
-The following content will also be released after paper acceptance.
-- [X] Release of two benchmark datasets: a dataset containing 1,665 RAW photos from 15 iPhone cameras and a newly supplementary dataset containing 1,276 RAW photos from 15 Android smartphone cameras.
-- [X] Release of Training codes for fingerprint extraction network.
-- [X] Integration codes (including cryptographic schemes).
+## Cite Our Paper
+If the code is helpful for your work, please cite our paper
+```
+@inproceedings{he2023transvcl,
+  title={Web Photo Source Identification based on Neural Enhanced Camera Fingerprint},
+  author={Qian, Feng and He, Sifeng and Huang, Honghaoo and others},
+  booktitle={Proceedings of the ACM Web Conference 2023},
+  year={2023}
+}
+```
 
 ## License
 The code is released under MIT license
@@ -50,7 +58,7 @@ The code is released under MIT license
 ```bash
 MIT License
 
-Copyright (c) 2022 PhotoNecf
+Copyright (c) 2023 Ant Grooup
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
